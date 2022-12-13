@@ -1,0 +1,28 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: seafile
+  namespace: seafile
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`seafile.local.westermanonline.com`)
+      kind: Rule
+      services:
+        - name: seafile
+          port: 80
+      middlewares:
+        - name: default-headers
+    - match: Host(`seafile.westermanonline.com`)
+      kind: Rule
+      services:
+        - name: seafile
+          port: 80
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: local-westermanonline-com-tls
