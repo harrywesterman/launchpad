@@ -62,3 +62,4 @@ kubeconfig*
 talosconfig*
 *.pub
 *.key
+secret-cf-token.yaml
