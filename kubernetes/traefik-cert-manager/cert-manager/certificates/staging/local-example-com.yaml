@@ -2,14 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: local-example-com
+  name: local-westermanonline-com
   namespace: default
 spec:
-  secretName: local-example-com-staging-tls
+  secretName: westermanonline-com-staging-tls
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-  commonName: "*.local.example.com"
+  commonName: "*.westermanonline.com"
   dnsNames:
-  - "local.example.com"
-  - "*.local.example.com"
+  - "westermanonline.com"

@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.local.example.com`)
+    - match: Host(`traefik.local.westermanonline.com`)
       kind: Rule
       middlewares:
         - name: traefik-dashboard-basicauth
@@ -17,5 +17,13 @@ spec:
       services:
         - name: api@internal
           kind: TraefikService
-#  tls:
-#    secretName: local-example-com-staging-tls
+    - match: Host(`traefik.westermanonline.com`)
+      kind: Rule
+      middlewares:
+        - name: traefik-dashboard-basicauth
+          namespace: traefik
+      services:
+        - name: api@internal
+          kind: TraefikService
+  tls:
+    secretName: local-westermanonline-com-tls

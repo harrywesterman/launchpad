@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`nextcloud.example.com`)
+    - match: Host(`nextcloud.westermanonline.com`)
       kind: Rule
       services:
         - name: nextcloud

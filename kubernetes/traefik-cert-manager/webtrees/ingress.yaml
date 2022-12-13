@@ -1,0 +1,28 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: webtrees
+  namespace: webtrees
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`webtrees.local.westermanonline.com`)
+      kind: Rule
+      services:
+        - name: webtrees
+          port: 80
+      middlewares:
+        - name: default-headers
+    - match: Host(`webtrees.westermanonline.com`)
+      kind: Rule
+      services:
+        - name: webtrees
+          port: 80
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: local-westermanonline-com-tls
