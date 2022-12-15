@@ -1,0 +1,28 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hedgedoc
+  namespace: hedgedoc
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`hedgedoc.local.westermanonline.com`)
+      kind: Rule
+      services:
+        - name: hedgedoc
+          port: 80
+      middlewares:
+        - name: default-headers
+    - match: Host(`hedgedoc.westermanonline.com`)
+      kind: Rule
+      services:
+        - name: hedgedoc
+          port: 80
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: local-westermanonline-com-tls
