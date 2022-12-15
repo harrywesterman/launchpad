@@ -14,14 +14,14 @@ spec:
       kind: Rule
       services:
         - name: hedgedoc
-          port: 3000
+          port: 80
       middlewares:
         - name: default-headers
     - match: Host(`hedgedoc.westermanonline.com`)
       kind: Rule
       services:
         - name: hedgedoc
-          port: 3000
+          port: 80
       middlewares:
         - name: default-headers
   tls:
