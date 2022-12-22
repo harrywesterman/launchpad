@@ -14,14 +14,14 @@ spec:
       kind: Rule
       services:
         - name: overseerr
-          port: 80
+          port: 5055
       middlewares:
         - name: default-headers
     - match: Host(`overseerr.westermanonline.com`)
       kind: Rule
       services:
         - name: overseerr
-          port: 80
+          port: 5055
       middlewares:
         - name: default-headers
   tls:
